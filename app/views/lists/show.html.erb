@@ -1,3 +1,14 @@
 <h1>Show list</h1>
 
 <%= @list.name %>
+
+<li class="list-group-item">
+  <% @list.bookmarks.each do |bookmark| %>
+    <li><%= bookmark.movie.title %></li>
+    <li><%= bookmark.comment %></li>
+  <%= link_to "Delete",
+    bookmark_path(bookmark),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+  %>
+  <% end %>
+</li>
